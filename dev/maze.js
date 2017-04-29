@@ -29,10 +29,10 @@ var Maze = function(board) {
 
     // create sets
     _.times(20, function() {
-      let x = random(1, that.columns - 1);
-      let y = random(1, that.rows - 1);
+      let x = 1 + _.random(that.columns - 1);
+      let y = 1 + _.random(that.rows - 1);
 
-      that.board.getCell(x, y).setSolid();
+      that.board.getCell(x, y).setSolid(true);
     });
   }
 }

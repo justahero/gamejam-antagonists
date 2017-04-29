@@ -23,6 +23,10 @@ var Cell = function(x, y) {
     cell.neighbors[(direction + 2) % 4] = this;
   }
 
+  this.setSolid = function(solid) {
+    this.solid = solid;
+  }
+
   this.isSolid = function() {
     return this.solid;
   }
