@@ -28,31 +28,11 @@ var Maze = function(board) {
     let that = this;
 
     // create sets
-    _.times(that.board.columns, function() {
-      _.times(that.board.rows, function() {
-        sets.push(new Node());
-      });
+    _.times(20, function() {
+      let x = random(1, that.columns - 1);
+      let y = random(1, that.rows - 1);
+
+      that.board.getCell(x, y).setSolid();
     });
-
-    // create edges
-    let edges = _.shuffle(buildEdges());
-  }
-
-  this.buildEdges = function() {
-    let edges = [];
-    let that  = this;
-
-    _.times(that.columns, function(x) {
-      _.times(that.columns, function(x) {
-        if (x > 0) {
-          edges.push(new Edge(x, y, Direction.WEST));
-        }
-        if (y > 0) {
-          edges.push(new Edge(x, y, Direction.NORTH));
-        }
-      });
-    });
-
-    return edges;
   }
 }
