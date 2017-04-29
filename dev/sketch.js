@@ -19,7 +19,6 @@ function setup() {
 
   p1 = new Player("Green", color(255, 0, 0), 10 * cell_width, 10 * cell_height, cell_width, cell_height); 
   p2 = new Player("Red", color(0, 255, 0), 5 * cell_width, 5 * cell_height, cell_width, cell_height); 
-  console.log(p1);
 
   // set up boards / players
   generateBoard(board);
@@ -86,6 +85,8 @@ function keyPressed() {
   if (keyCode == UP_ARROW) {
     p1.xSpeed = 0;
     p1.ySpeed = -1;
+
+    p1.move(Direction.NORTH, board);
   } else  if (keyCode == DOWN_ARROW) {
     p1.xSpeed = 0;
     p1.ySpeed = 1;
@@ -95,7 +96,7 @@ function keyPressed() {
   } else  if (keyCode == RIGHT_ARROW) {
     p1.xSpeed = 1;
     p1.ySpeed = 0;
-  } 
+  }
   if (keyCode == 87) {
     p2.xSpeed = 0;
     p2.ySpeed = -1;

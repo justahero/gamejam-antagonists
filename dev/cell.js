@@ -26,6 +26,14 @@ var Cell = function(x, y) {
     cell.neighbors[(direction + 2) % 4] = this;
   }
 
+  this.getNeighbor = function(direction) {
+    let neighbor = this.neighbors[direction];
+    if (neighbor == undefined) {
+      return null;
+    }
+    return neighbor;
+  }
+
   this.setSolid = function(solid) {
     this.solid = solid;
   }

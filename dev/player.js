@@ -5,14 +5,21 @@ var Player = function(name, color, posx, posy, width, height) {
   this.xSpeed = 0;
   this.ySpeed = 0;
 
-  this.update = function(){
+  this.update = function() {
     this.x += this.xSpeed * width;
     this.y += this.ySpeed * height;
   }
 
-  this.show = function(){
+  this.show = function() {
     fill(255, 0, 0);
     rect(this.x, this.y, width, height);
-    // fill(255);
+  }
+
+  this.move = function(direction, board) {
+    let neighbor = cell.getNeighbor(direction);
+
+    if (neighbor != undefined && !neighbor.isSolid()) {
+      this.cell = neighbor;
+    }
   }
 }
