@@ -17,8 +17,8 @@ function setup() {
   noStroke();
   loop();
 
-  p1 = new Player("Green", color(255, 0, 0), 10 * cell_width, 10 * cell_height, cell_width, cell_height); 
-  p2 = new Player("Red", color(0, 255, 0), 5 * cell_width, 5 * cell_height, cell_width, cell_height); 
+  p1 = new Player("Green", color(255, 0, 0));
+  p2 = new Player("Red", color(0, 255, 0));
 
   // set up boards / players
   generateBoard(board);
@@ -40,36 +40,11 @@ function draw() {
 
   if (p1 != undefined) {
     p1.show();
-    p1.update();
-    if (p1.x > window_width) {
-      p1.x = window_width - cell_width;
-    }
-    if (p1.y > window_height) {
-      p1.y = window_height - cell_height;
-    }
-    if (p1.x < 0) {
-      p1.x = 0;
-    }
-    if (p1.y < 0) {
-      p1.y = 0;
-    }
+    p1.update(window_width, window_height);
   }
-
   if (p2 != undefined) {
     p2.show();
-    p2.update();
-    if (p2.x > window_width) {
-      p2.x = window_width - cell_width;
-    }
-    if (p2.y > window_height) {
-      p2.y = window_height - cell_height;
-    }
-    if (p2.x < 0) {
-      p2.x = 0;
-    }
-    if (p2.y < 0) {
-      p2.y = 0;
-    }
+    p2.update(window_width, window_height);
   }
 }
 
@@ -83,19 +58,13 @@ function updateAnimation() {
 
 function keyPressed() {
   if (keyCode == UP_ARROW) {
-    p1.xSpeed = 0;
-    p1.ySpeed = -1;
-
     p1.move(Direction.NORTH, board);
   } else  if (keyCode == DOWN_ARROW) {
-    p1.xSpeed = 0;
-    p1.ySpeed = 1;
+    p1.move(Direction.SOUTH, board);
   } else  if (keyCode == LEFT_ARROW) {
-    p1.xSpeed = -1;
-    p1.ySpeed = 0;
+    p1.move(Direction.WEST, board);
   } else  if (keyCode == RIGHT_ARROW) {
-    p1.xSpeed = 1;
-    p1.ySpeed = 0;
+    p1.move(Direction.RIGHT, board);
   }
   if (keyCode == 87) {
     p2.xSpeed = 0;

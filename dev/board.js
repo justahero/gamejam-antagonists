@@ -42,6 +42,7 @@ var Board = function(columns, rows, cellWidth, cellHeight) {
   }
 
   this.addPlayer = function(player, x, y) {
+    player.setCell(this.getCell(x, y));
     this.players.push(player);
   }
 
@@ -67,10 +68,10 @@ var Board = function(columns, rows, cellWidth, cellHeight) {
   }
 
   this.drawPlayers = function() {
+    let that = this;
+
     _.each(this.players, function(player) {
-      // fill(player.color);
-      fill(0);
-      ellipse(50, 50);
+      player.show(that.cellWidth, that.cellHeight);
     });
   }
 

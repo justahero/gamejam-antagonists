@@ -1,18 +1,10 @@
-var Player = function(name, color, posx, posy, width, height) {
-  this.name   = name;
-  this.x      = posx;
-  this.y      = posy;
-  this.xSpeed = 0;
-  this.ySpeed = 0;
+var Player = function(name, color) {
+  this.name  = name;
+  this.color = color;
+  this.cell  = null;
 
-  this.update = function() {
-    this.x += this.xSpeed * width;
-    this.y += this.ySpeed * height;
-  }
-
-  this.show = function() {
-    fill(255, 0, 0);
-    rect(this.x, this.y, width, height);
+  this.setCell = function(cell) {
+    this.cell = cell;
   }
 
   this.move = function(direction, board) {
@@ -20,6 +12,13 @@ var Player = function(name, color, posx, posy, width, height) {
 
     if (neighbor != undefined && !neighbor.isSolid()) {
       this.cell = neighbor;
+    }
+  }
+
+  this.show = function(width, height) {
+    if (this.cell != null) {
+      fill(255, 0, 0);
+      rect(this.cell.x * width + 1, this.cell.y * height + 1, width - 2, height - 2);
     }
   }
 }
