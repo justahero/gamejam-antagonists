@@ -9,7 +9,6 @@ var Player = function(name, color) {
 
   this.move = function(direction, board) {
     let neighbor = this.cell.getNeighbor(direction);
-
     if (neighbor != undefined && !neighbor.isSolid()) {
       this.cell = neighbor;
     }
