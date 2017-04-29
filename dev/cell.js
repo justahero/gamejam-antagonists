@@ -62,6 +62,6 @@ var Cell = function(x, y) {
       color(64, 64, 0);
     }
 
-    rect(this.x * width, this.y * height, width, height);
+    rect(this.x * width + 1, this.y * height + 1, width - 2, height - 2);
   }
 }
