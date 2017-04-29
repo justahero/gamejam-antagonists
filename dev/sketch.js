@@ -8,6 +8,7 @@ var cell_width  = window_width / board_cols;
 var cell_height = window_height / board_rows;
 
 var board = new Board(board_cols, board_rows, cell_width, cell_height);
+let players = []
 
 function setup() {
   createCanvas(window_width, window_height);
@@ -16,16 +17,26 @@ function setup() {
   loop();
 
   // set up boards / players
+  initialize();
   generateBoard(board);
+}
+
+function initialize() {
+  players.push(new Player("Green", color(255, 0, 0))),
+  players.push(new Player("Red", color(0, 255, 0))),
+
+  board.addPlayer(players[0], 0, 0);
+  board.addPlayer(players[1], 20, 20);
 }
 
 function draw() {
   clear();
   background(224);
 
-  renderGrid();
-
+  updateInput();
   updateAnimation();
+
+  renderGrid();
 }
 
 function renderGrid() {
@@ -34,4 +45,8 @@ function renderGrid() {
 
 function updateAnimation() {
   // TODO
+}
+
+function updateInput() {
+
 }

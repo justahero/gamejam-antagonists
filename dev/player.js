@@ -1,4 +1,4 @@
-var Player = function(numAnts) {
-  this.name = "Test";
-  this.ants = createAnts();
+var Player = function(name, color) {
+  this.name  = name;
+  this.color = color;
 }
