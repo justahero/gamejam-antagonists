@@ -27,7 +27,7 @@ function setup() {
 
 function initialize() {
   board.addPlayer(p1, 0, 0);
-  board.addPlayer(p2, 29, 29);
+  board.addPlayer(p2, board_rows - 1, board_cols - 1);
 }
 
 function draw() {

@@ -73,10 +73,7 @@ var Board = function(columns, rows, cellWidth, cellHeight) {
     let ch   = this.cellHeight;
 
     _.each(this.players, function(player) {
-      const x = player.cell.x;
-      const y = player.cell.y;
-      fill(255, 0, 0);
-      rect(x * cw + 1, y * ch + 1, cw - 2, ch - 2);
+      player.draw(cw, ch);
     });
   }
 

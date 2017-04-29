@@ -13,4 +13,13 @@ var Player = function(name, color) {
       this.cell = neighbor;
     }
   }
+
+  this.draw = function(cellWidth, cellHeight) {
+    if (this.cell != null) {
+      const x = this.cell.x;
+      const y = this.cell.y;
+      fill(255, 0, 0);
+      rect(x * cellWidth + 1, y * cellHeight + 1, cellWidth - 2, cellHeight - 2);
+    }
+  }
 }
