@@ -1,38 +1,10 @@
-var Node = function(parent = null) {
-  this.parent = parent;
+var generateBoard = function(board) {
 
-  this.root = function() {
-    return (this.parent != null) ? this.parent.root() : this;
-  }
+  // create sets
+  _.times(20, function() {
+    let x = 1 + _.random(board.columns - 1);
+    let y = 1 + _.random(board.rows - 1);
 
-  this.isConnected = function(node) {
-    return this.root() == node.root();
-  }
-
-  this.connect = function(node) {
-    node.root().parent = this;
-  }
-}
-
-var Edge = function(x, y, direction) {
-  this.x         = x;
-  this.y         = y;
-  this.direction = direction;
-}
-
-var Maze = function(board) {
-  this.board = board;
-
-  this.generate = function() {
-    let sets = [];
-    let that = this;
-
-    // create sets
-    _.times(20, function() {
-      let x = 1 + _.random(that.columns - 1);
-      let y = 1 + _.random(that.rows - 1);
-
-      that.board.getCell(x, y).setSolid(true);
-    });
-  }
+    board.getCell(x, y).setSolid(true);
+  });
 }

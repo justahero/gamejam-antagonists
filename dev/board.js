@@ -34,15 +34,6 @@ var Board = function(columns, rows, cellWidth, cellHeight) {
     });
   }
 
-  this.initBoard = function() {
-    const that = this;
-    _.times(this.rows, function(y) {
-      _.times(this.columns, function(x) {
-        that.getCell(x, y).setWalls(true);
-      });
-    });
-  }
-
   this.getCell = function(column, row) {
     return this.cells[column * this.rows + row];
   }
@@ -67,5 +58,4 @@ var Board = function(columns, rows, cellWidth, cellHeight) {
   }
 
   this.linkCells();
-  this.initBoard();
 };

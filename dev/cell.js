@@ -33,7 +33,7 @@ var Cell = function(x, y) {
 
   this.draw = function(width, height) {
     if (this.solid) {
-      color(64, 64, 0);
+      color(64);
     } else {
       color(255);
     }
