@@ -8,17 +8,10 @@ var Player = function(name, color) {
   }
 
   this.move = function(direction, board) {
-    let neighbor = cell.getNeighbor(direction);
+    let neighbor = this.cell.getNeighbor(direction);
 
     if (neighbor != undefined && !neighbor.isSolid()) {
       this.cell = neighbor;
-    }
-  }
-
-  this.show = function(width, height) {
-    if (this.cell != null) {
-      fill(255, 0, 0);
-      rect(this.cell.x * width + 1, this.cell.y * height + 1, width - 2, height - 2);
     }
   }
 }
