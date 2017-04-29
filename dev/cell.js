@@ -33,11 +33,10 @@ var Cell = function(x, y) {
 
   this.draw = function(width, height) {
     if (this.solid) {
-      color(64);
+      fill(64);
     } else {
-      color(255);
+      fill(255);
     }
-
     rect(this.x * width + 1, this.y * height + 1, width - 2, height - 2);
   }
 }
