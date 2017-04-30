@@ -1,5 +1,4 @@
 const backgroundColor = 128;
-const wallColor       = 0;
 
 function createCells(columns, rows) {
   let cells = new Array();
@@ -22,19 +21,17 @@ var Board = function(columns, rows, cellWidth, cellHeight) {
   this.players    = [];
 
   this.linkCells = function() {
-    const that = this;
+    for (x = 0; x < this.columns - 1; x++) {
+      for (y = 0; y < this.rows; y++) {
+        this.getCell(x, y).setNeighbor(Direction.EAST, this.getCell(x + 1, y));
+      }
+    }
 
-    _.times(this.columns - 1, function(x) {
-      _.times(that.rows, function(y) {
-        that.getCell(x, y).setNeighbor(Direction.EAST, that.getCell(x + 1, y));
-      });
-    })
-
-    _.times(this.rows - 1, function(y) {
-      _.times(this.columns, function(x) {
-        that.getCell(x, y).setNeighbor(Direction.SOUTH, that.getCell(x, y + 1));
-      });
-    });
+    for (y = 0; y < this.rows - 1; y++) {
+      for (x = 0; x < this.columns; x++) {
+        this.getCell(x, y).setNeighbor(Direction.SOUTH, this.getCell(x, y + 1));
+      }
+    }
   }
 
   this.getCell = function(column, row) {

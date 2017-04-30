@@ -60,7 +60,8 @@ var Cell = function(x, y) {
       const centerx = this.x * width + width / 2;
       const centery = this.y * width + height / 2;
 
-      fill(100, 100, 200);
+      // fill(100, 100, 200);
+      fill(50, 150, 0);
       ellipse(centerx, centery, width - 2, height - 2);
     }
   }
