@@ -13,7 +13,7 @@ let p2;
 
 function setup() {
   createCanvas(window_width, window_height);
-  frameRate(30);
+  frameRate(15);
   noStroke();
   loop();
 
@@ -54,20 +54,16 @@ function keyPressed() {
   } else if (keyCode == LEFT_ARROW) {
     p1.move(Direction.WEST, board);
   } else if (keyCode == RIGHT_ARROW) {
-    p1.move(Direction.RIGHT, board);
+    p1.move(Direction.EAST, board);
   }
   if (keyCode == 87) {
-    p2.xSpeed = 0;
-    p2.ySpeed = -1;
+    p2.move(Direction.NORTH, board);
   } else if (keyCode == 83) {
-    p2.xSpeed = 0;
-    p2.ySpeed = 1;
+    p2.move(Direction.SOUTH, board);
   } else if (keyCode == 65) {
-    p2.xSpeed = -1;
-    p2.ySpeed = 0;
+    p2.move(Direction.WEST, board);
   } else if (keyCode == 68) {
-    p2.xSpeed = 1;
-    p2.ySpeed = 0;
+    p2.move(Direction.EAST, board);
   } 
 }
 
