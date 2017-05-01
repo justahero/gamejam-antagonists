@@ -66,14 +66,3 @@ function keyPressed() {
     p2.move(Direction.EAST, board);
   } 
 }
-
-function keyReleased() {
-  if (keyCode == 87 || keyCode == 83 || keyCode == 65 || keyCode == 68) {
-    p2.xSpeed = 0;
-    p2.ySpeed = 0;
-  } else {
-    p1.xSpeed = 0;
-    p1.ySpeed = 0;
-  }
-  return false;
-}

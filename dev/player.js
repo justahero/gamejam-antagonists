@@ -1,7 +1,10 @@
+const MAX_FOOD = 10;
+
 var Player = function(name, color) {
   this.name  = name;
   this.color = color;
   this.cell  = null;
+  this.food  = 0;
 
   this.setCell = function(cell) {
     this.cell = cell;
@@ -10,8 +13,12 @@ var Player = function(name, color) {
   this.move = function(direction, board) {
     if (this.cell != null) {
       let neighbor = this.cell.getNeighbor(direction);
-      if (neighbor != undefined && !neighbor.isSolid()) {
-        this.cell = neighbor;
+      if (neighbor) {
+        if (!neighbor.isSolid()) {
+          this.cell = neighbor;
+        }
+
+        // pick up food
       }
     }
   }

@@ -1,6 +1,8 @@
 var Direction = Object.freeze({NORTH: 0, EAST: 1, SOUTH: 2, WEST: 3});
 var State     = Object.freeze({FREE: 0, SOLID: 1});
 
+const maxFood = 100;
+
 var Cell = function(x, y) {
   this.x         = x;
   this.y         = y;
@@ -42,8 +44,12 @@ var Cell = function(x, y) {
     return this.solid;
   }
 
-  this.setFood = function() {
+  this.setFood = function(food = MAX_FOOD) {
     this.food = 100;
+  }
+
+  this.getFood = function() {
+    return this.food;
   }
 
   this.draw = function(width, height) {
@@ -60,8 +66,10 @@ var Cell = function(x, y) {
       const centerx = this.x * width + width / 2;
       const centery = this.y * width + height / 2;
 
-      // fill(100, 100, 200);
-      fill(50, 150, 0);
+      let col = chroma(50, 150, 0).brighten(this.food / 100.0);
+      // TODO
+      // debugger;
+      fill(col.rgb());
       ellipse(centerx, centery, width - 2, height - 2);
     }
   }
