@@ -1,8 +1,11 @@
-var Ant = function(player, cell) {
-  this.player = player;
-  this.cell   = cell;
+var Ant = function(cell) {
+  this.cell = cell;
 
   this.setCell = function(cell) {
     this.cell = cell;
+  }
+
+  this.draw = function(cellWidth, cellHeight) {
+    // TODO
   }
 }

@@ -17,8 +17,8 @@ function setup() {
   noStroke();
   loop();
 
-  p1 = new Player("Blue", color(0, 0, 255));
-  p2 = new Player("Red", color(200, 0, 0));
+  p1 = new Player("Blue", chroma(0, 0, 255));
+  p2 = new Player("Red", chroma(200, 0, 0));
 
   // set up boards / players
   generateBoard(board);
