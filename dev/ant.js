@@ -5,8 +5,4 @@ var Ant = function(player, cell) {
   this.setCell = function(cell) {
     this.cell = cell;
   }
-
-  this.getCell = function() {
-    return this.cell;
-  }
 }

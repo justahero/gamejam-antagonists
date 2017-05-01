@@ -19,7 +19,7 @@ var generateBoard = function(board) {
     let y = (_.floor(board.rows / 2)) - 5 + _.random(10);
 
     let cell = board.getCell(x, y);
-    if (cell != undefined && !cell.isSolid() && cell.getFood() === 0) {
+    if (cell != undefined && !cell.isSolid() && cell.food <= 0) {
       cell.setFood(85 + _.random(15));
       foods += 1;
     }

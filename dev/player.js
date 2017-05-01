@@ -19,6 +19,9 @@ var Player = function(name, color) {
         }
 
         // pick up food
+        if (neighbor.food > 0) {
+          
+        }
       }
     }
   }

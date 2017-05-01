@@ -1,19 +1,15 @@
 var Direction = Object.freeze({NORTH: 0, EAST: 1, SOUTH: 2, WEST: 3});
 var State     = Object.freeze({FREE: 0, SOLID: 1});
 
-const maxFood = 100;
-
 var Cell = function(x, y) {
-  this.x         = x;
-  this.y         = y;
+  this.x = x;
+  this.y = y;
 
   this.neighbors = [null, null, null, null];
 
   this.state = 0;
   this.solid = false;
   this.food  = 0;
-
-  this.ant   = null;
 
   this.getNeighbor = function(direction) {
     return this.neighbors[direction];
@@ -46,10 +42,6 @@ var Cell = function(x, y) {
 
   this.setFood = function(food = MAX_FOOD) {
     this.food = 100;
-  }
-
-  this.getFood = function() {
-    return this.food;
   }
 
   this.draw = function(width, height) {
