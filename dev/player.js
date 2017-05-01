@@ -1,18 +1,14 @@
 const MAX_FOOD = 10;
 
-var Player = function(name, color) {
+var Player = function(name, color, cell) {
   this.name  = name;
-  this.color = color.saturate(1);
-  this.cell  = null;
+  this.color = color;
+  this.cell  = cell;
   this.food  = 0;
   this.ants  = [];
 
-  this.setCell = function(cell) {
-    this.cell = cell;
-  }
-
   this.spawnAnt = function() {
-    this.ants.push(new Ant(this.cell));
+    this.ants.push(new Ant(this.color, this.cell));
   }
 
   // TODO change the location of the first ant only!
@@ -29,7 +25,9 @@ var Player = function(name, color) {
 
   // update all ants, except first one?
   this.update = function() {
-    // TODO
+    if (frameCount % 15 === 0) {
+      const shuffledAnts = _.tail(this.ants);
+    }
   }
 
   // draw hive and all ants!
@@ -38,8 +36,8 @@ var Player = function(name, color) {
     if (this.cell != null) {
       const x = this.cell.x;
       const y = this.cell.y;
-      fill(this.color.rgb());
-      rect(x * cellWidth + 1, y * cellHeight + 1, cellWidth - 3, cellHeight - 3, 5);
+      fill(this.color.saturate(1).rgb());
+      rect(x * cellWidth + 1, y * cellHeight + 1, cellWidth - 2, cellHeight - 2, 5);
     }
 
     // draw all ants

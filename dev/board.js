@@ -13,11 +13,11 @@ function createCells(columns, rows) {
 var Board = function(columns, rows, cellWidth, cellHeight) {
   this.columns    = columns;
   this.rows       = rows;
+
   this.cellWidth  = cellWidth;
   this.cellHeight = cellHeight;
   this.cells      = createCells(columns, rows)
 
-  this.ants       = [];
   this.players    = [];
 
   this.linkCells = function() {
@@ -38,9 +38,14 @@ var Board = function(columns, rows, cellWidth, cellHeight) {
     return this.cells[column * this.rows + row];
   }
 
-  this.addPlayer = function(player, x, y) {
-    player.setCell(this.getCell(x, y));
+  this.addPlayer = function(player) {
     this.players.push(player);
+  }
+
+  this.update = function() {
+    _.each(this.players, function(player, index) {
+      player.update();
+    });
   }
 
   this.draw = function() {
@@ -56,12 +61,7 @@ var Board = function(columns, rows, cellWidth, cellHeight) {
 
   this.drawCell = function(x, y) {
     const cell = this.getCell(x, y);
-
-    const cw = this.cellWidth;
-    const ch = this.cellHeight;
-
-    // render cells
-    cell.draw(cw, ch);
+    cell.draw(this.cellWidth, this.cellHeight);
   }
 
   this.drawPlayers = function() {
